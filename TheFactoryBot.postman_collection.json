@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "1d525791-28c7-46ce-8dfb-90195a84bfd5",
+		"name": "TheFactoryBot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Авторизация и профиль",
+			"item": [
+				{
+					"name": "Регистрация",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test2@gmail.com\",\n    \"first_name\": \"Dave\",\n    \"password\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/users/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Логин",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody)",
+									"postman.setEnvironmentVariable('access-token', jsonData.access)",
+									"postman.setEnvironmentVariable('refresh-token', jsonData.refresh)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test2@gmail.com\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth-token/obtain",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth-token",
+								"obtain"
+							]
+						},
+						"description": "Allows to get access and refresh tokens. As username must be passed user email. When tokens successfully obtained, access token must be defines in every outgoing request in Authorization header with value in format \"Bearer {access-token}\"\n\nI strongly recommend to save these tokens to somewhere in client side, like, localstorage for example"
+					},
+					"response": []
+				},
+				{
+					"name": "Обновить auth токен",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody)",
+									"postman.setEnvironmentVariable('access-token', jsonData.access)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"{{refresh-token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth-token/refresh",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth-token",
+								"refresh"
+							]
+						},
+						"description": "Every access-token has limited life time. When token expires, server will response with error. In order to get new access token without entering credentials again, you have \"refresh\" token. Just send it to server and it will response with new one for you, so you can use it for requests"
+					},
+					"response": []
+				},
+				{
+					"name": "Проверить auth токен",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{access-token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth-token/verify",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth-token",
+								"verify"
+							]
+						},
+						"description": "Anytime you want to check if current access-token is still working, just send it using this method. If everything is okay, then server will respond with 200 OK status, otherwise error 401 will be raised"
+					},
+					"response": []
+				},
+				{
+					"name": "Профиль пользователя",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/me",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Is responsible for processing registration and login of user. On success login saves token to env variable"
+		},
+		{
+			"name": "Токен для ТГ бота",
+			"item": [
+				{
+					"name": "Сгенерировать токен",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/bot-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"bot-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотреть токен",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/bot-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"bot-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Сообщения",
+			"item": [
+				{
+					"name": "Создать сообщение",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Тестовое сообщение! Ура!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/messages",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить список сообщений",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/messages?page=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"messages"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access-token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
