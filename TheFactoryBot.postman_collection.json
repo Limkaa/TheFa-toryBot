@@ -18,7 +18,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"test2@gmail.com\",\n    \"first_name\": \"Dave\",\n    \"password\": 123\n}",
+							"raw": "{\n    \"email\": \"test1@gmail.com\",\n    \"first_name\": \"Dave\",\n    \"password\": 123\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -26,11 +26,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/users/register",
+							"raw": "http://188.94.158.253:8000/api/users/register",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"users",
 								"register"
 							]
@@ -61,7 +67,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"test2@gmail.com\",\n    \"password\": \"123\"\n}",
+							"raw": "{\n    \"email\": \"test1@gmail.com\",\n    \"password\": \"123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -69,11 +75,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/auth-token/obtain",
+							"raw": "http://188.94.158.253:8000/api/auth-token/obtain",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"auth-token",
 								"obtain"
 							]
@@ -112,11 +124,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/auth-token/refresh",
+							"raw": "http://188.94.158.253:8000/api/auth-token/refresh",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"auth-token",
 								"refresh"
 							]
@@ -154,11 +172,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/auth-token/verify",
+							"raw": "http://188.94.158.253:8000/api/auth-token/verify",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"auth-token",
 								"verify"
 							]
@@ -173,11 +197,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/users/me",
+							"raw": "http://188.94.158.253:8000/api/users/me",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"users",
 								"me"
 							]
@@ -206,11 +236,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/bot-token",
+							"raw": "http://188.94.158.253:8000/api/bot-token",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"bot-token"
 							]
 						}
@@ -223,11 +259,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/bot-token",
+							"raw": "http://188.94.158.253:8000/api/bot-token",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"bot-token"
 							]
 						}
@@ -254,11 +296,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/messages",
+							"raw": "http://188.94.158.253:8000/api/messages",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"messages"
 							]
 						}
@@ -271,11 +319,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/messages?page=1",
+							"raw": "http://188.94.158.253:8000/api/messages?page=1",
+							"protocol": "http",
 							"host": [
-								"{{BASE_URL}}"
+								"188",
+								"94",
+								"158",
+								"253"
 							],
+							"port": "8000",
 							"path": [
+								"api",
 								"messages"
 							],
 							"query": [
